@@ -123,7 +123,7 @@ source "vsphere-iso" "Dev" {
 
   username       = var.vcenter_username
   vcenter_server = var.vcenter_server
-  vm_name        = "Ubuntu-2004-Template"
+  vm_name        = var.vm_name
 }
 
 build {
