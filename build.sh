@@ -75,12 +75,12 @@ fi
 case ${task} in
     deploy)
         printf "\n Build and Create a VMware Template. \n\n"
-        packer build -force "${template_name}"
+        packer build -force "${template_name}" -machine-readable | tee build.log
         status=$?
         ;;
     debug)
         printf "\n Build and Create VMWare Template In Debug Mode. \n\n"
-        PACKER_LOG=1 packer build -debug -on-error=ask -force "${template_name}"
+        PACKER_LOG=1 packer build -debug -on-error=ask -force "${template_name}" -machine-readable | tee build.log
         status=$?
         ;;
     *)
@@ -90,7 +90,7 @@ esac
 
 ## Remove Files with Passwords
 [[ -f http/preseed.cfg ]] && rm -v http/preseed.cfg
-
+grep 'artifact,0,id' build.log | cut -d, -f6 | cut -d: -f2 | tee $1
 exit ${status}
 
 
