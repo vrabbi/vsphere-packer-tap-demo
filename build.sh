@@ -89,7 +89,7 @@ case ${task} in
 esac
 
 ## Remove Files with Passwords
-[[ -f http/preseed.cfg ]] && printf "removing preseed file" && rm -v http/preseed.cfg
+[[ -f http/preseed.cfg ]] && rm -v http/preseed.cfg
 
 exit ${status}
 
