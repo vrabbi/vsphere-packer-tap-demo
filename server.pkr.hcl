@@ -158,6 +158,9 @@ build {
     expect_disconnect = true
     scripts = ["scripts/base.sh", "scripts/installs.sh"]
   }
+  provisioner "shell" {
+    inline = ["sudo su root -c 'curl -L https://carvel.dev/install.sh | bash'"]
+  }
 
   provisioner "shell" {
     inline = [
