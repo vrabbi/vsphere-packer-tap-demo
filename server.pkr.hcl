@@ -123,7 +123,7 @@ source "vsphere-iso" "Dev" {
 
   username       = var.vcenter_username
   vcenter_server = var.vcenter_server
-  vm_name        = "${var.vm_name}-${formatdate("YYYY-MM-DD-hh-mm", timestamp())}"
+  vm_name        = "Ubuntu-2004-Temp-${formatdate("YYYY-MM-DD-hh-mm", timestamp())}"
 }
 
 build {
